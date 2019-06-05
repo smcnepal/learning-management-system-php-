@@ -25,10 +25,20 @@
 				<label>SELECT A COURSE</label>
 			</div>
 			<div class="col-sm-8">
-				<select name="department">
-					<option value="">--- SELECT ---</option>
-					<option value="CSE">CSE</option>
-					<option value="ISE">ISE</option>	
+				<select name="course" required="required">
+				<option value="">--- SELECT ---</option>
+				<?php 
+					$db=mysqli_connect ("localhost", "root", "") or die ('I cannot connect to the database because: ' . mysqli_error()); mysqli_select_db ($db,"lms_projectdb");
+
+					$query = mysqli_query($db,"SELECT id,name FROM course");
+					while($r=mysqli_fetch_array($query)) 
+					{
+						if ($r["name"]!='') 
+						{
+							echo "<option value="; echo $r["id"]; echo">"; echo $r["name"]; echo "</option>";
+						}
+					}
+				?>
 				</select>
 			</div>
 		</div>		
@@ -38,7 +48,7 @@
 				<label>USER ID</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" name="userid" placeholder="user_id" value"<?php echo $userid; ?>">
+				<input type="text" name="userId" placeholder="user_id" value="<?php echo $userId; ?>" required="required">
 			</div>
 		 </div>
 
@@ -47,7 +57,7 @@
 				<label>FIRST NAME</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" name="username" placeholder="John"value="<?php echo $username; ?>">
+				<input type="text" name="firstName" placeholder="John"value="<?php echo $firstName; ?>" required="required">
 			</div>				
 		 </div>
 
@@ -56,7 +66,7 @@
 				<label>LAST NAME</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" name="username" placeholder="Jecob"value="<?php echo $username; ?>">
+				<input type="text" name="lastName" placeholder="Jecob"value="<?php echo $lastName; ?>" required="required">
 			</div>				
 		 </div>
 
@@ -65,7 +75,7 @@
 				<label>BATCH NO.</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" name="batchno" placeholder=""value="<?php echo $batchno; ?>">
+				<input type="text" name="batch" placeholder=""value="<?php echo $batch; ?>" required="required">
 			</div>
 		</div>
 
@@ -74,7 +84,7 @@
 				<label>MOBILE NO.</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="text" name="mobileno" placeholder="+919620000000"value="<?php echo $mobileno; ?>">
+				<input type="text" name="mobile" placeholder="9620000000"value="<?php echo $mobile; ?>" required="required">
 			</div>
 		</div>
 
@@ -83,7 +93,7 @@
 				<label>EMAIL ID</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="email" name="email" placeholder="example@provider.com" value="<?php echo $email; ?>">
+				<input type="email" name="emailId" placeholder="example@provider.com" value="<?php echo $emailId; ?>" required="required">
 			</div>
 		</div>
 
@@ -92,7 +102,7 @@
 				<label>PASSWORD</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="password" name="password_1">
+				<input type="password" name="password_1" required="required">
 			</div>
 		</div>
 
@@ -101,12 +111,12 @@
 				<label>CONFIRM PASSWORD</label>
 			</div>
 			<div class="col-sm-8">
-				<input type="password" name="password_2">
+				<input type="password" name="password_2" required="required">
 			</div>
 		</div>
 
 		<div class="row form-group">
-			<div type="submit" class="btn btn-primary pull-right" name="reg_user"><STRONG>REGISTER</STRONG></div>
+			<button type="submit" class="btn btn-primary pull-right" name="reg_user"><STRONG>REGISTER</STRONG></button>
 		</div>
 		<h6><a style="text-decoration: none;" href="login.php">
 			Already a member? | Signin</a>
