@@ -24,7 +24,7 @@
 		<?php include('errors.php'); ?>
 		<div class="form-group">
 			<label>USER ID</label>
-			<input type="text" name="userid" class="form-control" placeholder="user_id" required="required" >
+			<input type="text" name="userId" class="form-control" placeholder="user_id" required="required" >
 		</div>
 		<br/>
 		<div class="form-group">
@@ -32,7 +32,7 @@
 			<input type="password" name="password" class="form-control" required="required">
 		</div>
 		<div class="form-group">
-			<div type="submit" class="login btn btn-success" name="login_user"><strong>LOGIN</strong></div>
+			<button type="submit" class="login btn btn-success" name="login_user"><strong>LOGIN</strong></button>
 		</div>
 		
 		<p>
