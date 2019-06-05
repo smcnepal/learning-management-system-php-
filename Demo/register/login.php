@@ -5,49 +5,44 @@
 	<title>Login for notes</title>
 	<link rel="shortcut icon" href="tts.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
-<body style="background-image: url(bg.jpeg);background-repeat: no-repeat;">
-
+<body>
+<div class="row">
+	<div class="col-sm-7">
+		<img src="1.jpeg" width= 100% id="proAd"/>
+	</div>
+	<div class="col-sm-5">
 	<div class="header">
 		<h4>LOGIN FORM</h4>
 	</div>
 	
-	<form method="post" action="login.php">
+	<form method="post" action="login.php" width=100px>
 
 		<?php include('errors.php'); ?>
-
-			<div class="input-group">
-				<label>SELECT A COURSE</label>
-				<select name="department">
-					<option value="CSE">CSE</option>
-					<option value="ISE">ISE</option>
-				
-				</select>
-			</div>
-			<label class="radio-inline">
-			<input type="radio" name="proffession" value="Student" required="required">STUDENT
-			</label>
-			<label class="radio-inline">
-			<input type="radio" name="proffession" value="Faculty" required="required">ADMIN
-			</label>
-
-		<div class="input-group">
+		<div class="form-group">
 			<label>USER ID</label>
-			<input type="text" name="userid" placeholder="INT14CS001" required="required" >
+			<input type="text" name="userid" class="form-control" placeholder="user_id" required="required" >
 		</div>
-		<div class="input-group">
+		<br/>
+		<div class="form-group">
 			<label>PASSWORD</label>
-			<input type="password" name="password" placeholder="****************" required="required">
+			<input type="password" name="password" class="form-control" required="required">
 		</div>
-		<div class="input-group">
-			<button type="submit" class="btn" name="login_user"><strong>LOGIN</strong></button>
+		<div class="form-group">
+			<div type="submit" class="login btn btn-success" name="login_user"><strong>LOGIN</strong></div>
 		</div>
 		
 		<p>
-			 <a style="color: white;text-decoration: none;" href="forgot.php">forgot password ?</a>
+			 <a style="text-decoration: none;" href="forgot.php">forgot password ?</a>
 		</p>
 	</form>
 
+	</div>
+</div>
+	
 
 </body>
 </html>
