@@ -42,48 +42,70 @@
 				<div class="col-md-3">
 					<div class="featured-box"> 
 						<div class="text">
-						<form name="form1" action="" method="POST" enctype="multipart/form-data">
+						<form name="form1" action="admin.php" method="POST" enctype="multipart/form-data">
 							<div class="input-group">
-								<label>SELECT COURSE:</label>
-								<select name="Subjects" style="margin-bottom: 15px;">
-									<option value=" ">--SELECT--</option>
-									<option value="physics">Physics</option>
-									<option value="eme">Mechanical</option>
-									<option value="cip">CIP</option>
-									<option value="math1">Math-I</option>
-									<option value="electrical">Electrical</option>
-									<option value="mechanics">Mechanics</option>
-								</select>
+
+								<select name="course" required="required">
+						<option value="">--- SELECT ---</option>
+									<?php 
+					$db=mysqli_connect ("localhost", "root", "") or die ('Cannot connect to the database because: ' . mysqli_error()); mysqli_select_db ($db,"lms_projectdb");
+
+					$query = mysqli_query($db,"SELECT id,name FROM course");
+					while($r=mysqli_fetch_array($query)) 
+					{
+						if ($r["name"]!='') 
+						{
+							echo "<option value="; echo $r["id"]; echo">"; echo $r["name"]; echo "</option>";
+						}
+					}
+				?>
+				
+						</select>
 							</div>
 							<input style="background:grey;width: 100%;" type="file" name="f"/></br>
-							<strong style="color: grey;">Dscription</strong>
-							<input style="width: 100%;" type="text" name="description"/></br></br>
+							<strong style="color: grey;">Document's Title:</strong>
+							<input style="width: 100%;" type="text" name="title"/></br></br>
 
 							<button style="width: 100%;height: 50px; background: rgb(0,64,68); color: white;" type="submit"  name="submit1"><strong>UPLOAD</strong></button>
 						</form>
 						<?php
-							
-								$filename = isset($_POST['description']) ? $_POST['description'] : '';
 
-							$db = mysqli_connect('localhost', 'root', '', 'documents');
+							$db=mysqli_connect ("localhost", "root", "") or die ('Cannot connect to the database because: ' . mysqli_error()); mysqli_select_db ($db,"lms_projectdb");
+
+								$date= date("Y-m-d");
+								$size= 10;
+								$message="Data Inserted successfully";
+
 							if (isset($_POST["submit1"])) 
 							{
-								$Subjects =$_POST['Subjects'];
-								$fnm = $_FILES["f"]["name"];
-								$dst= "./uploads/".$fnm;
-								move_uploaded_file($_FILES["f"]["tmp_name"], $dst);
-								$query="INSERT into $Subjects(uploaded_by,name,path)values('$filename','$fnm','$dst')";
-								$query=mysqli_query($db,$query);
+								$course =$_POST['course'];
 
-								if ($query==true) 
-								{
-									echo "Document uploaded successfully";
-									}
-								else
-								{
-									echo " ";
+								$title = isset($_POST['title']) ? $_POST['title'] : '';
+
+								$fnm = $_FILES["f"]["name"];
+
+								$dst= "./uploads/".$fnm;
+
+								move_uploaded_file($_FILES["f"]["tmp_name"], $dst);
+
+								$sql ="INSERT into media(id,title,fileName,userId,fileSize,createdDate,modifiedDate,course,type,url)VALUES('','$title','$fnm','ADMIN','$size','$date','$date','$course','a','$dst')";
+								
+								/*$sql1="select * from media where id=1";*/
+
+								if(mysqli_query($db, $sql)){
+								echo $message;
 								}
+								else{
+								echo "Could not insert data :-" . mysqli_error($db);
+								}
+								/*close connection
+								mysqli_close($db);*/
 							}
+							else
+							{
+								echo " ";
+							}
+
 						?>
 					</div>
 				</div>
@@ -93,7 +115,9 @@
 			<div class="col-md-3" id="display_maths1" style="display: none;">
 					<div class="featured-box"> 
 						<?php 
-						$db=mysqli_connect ("localhost", "root", "") or die ('I cannot connect to the database because: ' . mysqli_error()); mysqli_select_db ($db,"documents");
+						$db=mysqli_connect ("localhost", "root", "") or die ('cannot connect to the database because: ' . mysqli_error()); 
+
+						mysqli_select_db ($db,"lms_projectdb");
 
 						$query = mysqli_query($db,"SELECT * FROM math1 ORDER BY name");
 							//echo '<div class = "container">';
