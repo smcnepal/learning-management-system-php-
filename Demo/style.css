@@ -1,9 +1,14 @@
 .navbar {
     border-radius: 0px;
+    min-height: 80px !important;
 }
 
 .navbar-brand,.navbar-default .navbar-nav>li>a  {
     color: #337ab7 !important;
+}
+
+.navbar-nav{
+    margin-top: 15px;
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -39,9 +44,9 @@
   
   div.content {
     margin-left: 290px;
-    margin-top: 70px;
+    margin-top: 100px;
     padding: 1px 16px;
-    height: 1000px;
+    
   }
   
   @media screen and (max-width: 700px) {
@@ -109,5 +114,15 @@
   #dropdown .active {
     background-color: rgb(224, 116, 0) !important;
     color: white;
+  }
+
+  .footer {
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      width: 100%;
+      background-color: rgb(172, 172, 172);
+      z-index: 10;
+      padding: 20px;
   }
  

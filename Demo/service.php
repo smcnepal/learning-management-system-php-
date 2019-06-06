@@ -31,8 +31,8 @@
                                 echo $r["fileName"];
                                 echo "</td>";
                                 echo "<td>"; ?>
-									 <a href="<?php echo $r["url"]; ?>">preview</a>
-									 <a href="delete_record.php?id=$r['id'].">delete</a>
+									 <a href="<?php echo $r["url"]; ?>"><div class="btn btn-primary">preview</div></a>
+									 <!-- <a href="delete_record.php?id=$r['id'].">delete</a> -->
 								<?php
                                 echo "</td>";
                                 echo "</tr>";

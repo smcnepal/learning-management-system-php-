@@ -27,10 +27,10 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-		<a class="navbar-brand" href="#">shrestha</a>
+		<a class="navbar-brand" href="#"><img src="logo.png"/ height= 50px;></a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
-     	 	<li><a href="#"> Tejash Shrestha</a></li>
+     	 	<li><a href="#">Tejash Shrestha</a></li>
     	</ul>
 	</div>
 	</nav>
@@ -63,109 +63,93 @@
 			
 
 	<div class="content">
-    
-
-	<!--oddsem-->
-
-	
-    <div id="pcourses">
-		<section class="container" style="width: 90%">
-			<div class="row">
-			<div class="col-md-7" id="display_table" style="display: none;">
-					<div id="featured-box"> 
-						
-						</div>
-
-				</div>
-
-
-			
-			<div class="col-md-4 col-md-offset-1">
-				<div class="featured-box"> 
-					<div class="text">
-					<form name="form1" action="" method="POST" enctype="multipart/form-data">
-						<div class="input-group">
-							<label>SELECT COURSE:</label>
-							<select name="Subjects" style="margin-bottom: 15px;">
-								<option value=" ">--SELECT--</option>
-								<option value="physics">Physics</option>
-								<option value="eme">Mechanical</option>
-								<option value="cip">CIP</option>
-								<option value="math1">Math-I</option>
-								<option value="electrical">Electrical</option>
-								<option value="mechanics">Mechanics</option>
-							</select>
-						</div>
-						<input style="background:grey;width: 100%;" type="file" name="f"/></br>
-						<strong style="color: grey;">Dscription</strong>
-						<input style="width: 100%;" type="text" name="description"/></br></br>
-
-						<button style="width: 100%;height: 50px; background: rgb(0,64,68); color: white;" type="submit"  name="submit1"><strong>UPLOAD</strong></button>
-					</form>
-					<?php
-                        
-                            $filename = isset($_POST['description']) ? $_POST['description'] : '';
-
-                        $db = mysqli_connect('localhost', 'root', '', 'documents');
-                        if (isset($_POST["submit1"])) {
-                            $Subjects =$_POST['Subjects'];
-                            $fnm = $_FILES["f"]["name"];
-                            $dst= "./uploads/".$fnm;
-                            move_uploaded_file($_FILES["f"]["tmp_name"], $dst);
-                            $query="INSERT into $Subjects(uploaded_by,name,path)values('$filename','$fnm','$dst')";
-                            $query=mysqli_query($db, $query);
-
-                            if ($query==true) {
-                                echo "Document uploaded successfully";
-                            } else {
-                                echo " ";
-                            }
-                        }
-                    ?>
-				</div>
-			</div>
-
-			</div>
-
-		</section>
-	</div>
-	</div>
-	
-	</div>
-	
-  </div>
-</div>
-		<footer>	
-		
-		<div class="footer2">
-			<div class="container">
+		<div id="pcourses">
+			<section class="container" style="width: 90%">
 				<div class="row">
-
-					<div class="col-md-6 panel">
-						<div class="panel-body">
-							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="#">About</a> |
-								<a href="#">Contact</a>
-								| <a href="#">Logout</a>
-							</p>
+				<div class="col-md-7" id="display_table">
+						<div id="featured-box"> 
+							<img src="classroom.jpg" width=100% height=auto/>	
 						</div>
+
 					</div>
 
-					
 
-					<div class="col-md-6 panel">
-						<div class="panel-body">
-							<p class="text-right">
-								Copyright &copy; 2019. Developed by Petrichor Technologies</a>
-							</p>
-						</div>
+				
+				<div class="col-md-4 col-md-offset-1">
+					<div class="featured-box"> 
+						<div class="text">
+						<form name="form1" action="" method="POST" enctype="multipart/form-data">
+							<div class="input-group">
+								<label>SELECT COURSE:</label>
+								<select name="Subjects" style="margin-bottom: 15px;">
+									<option value=" ">--SELECT--</option>
+									<option value="physics">Physics</option>
+									<option value="eme">Mechanical</option>
+									<option value="cip">CIP</option>
+									<option value="math1">Math-I</option>
+									<option value="electrical">Electrical</option>
+									<option value="mechanics">Mechanics</option>
+								</select>
+							</div>
+							<input style="background:grey;width: 100%;" type="file" name="f"/></br>
+							<strong style="color: grey;">Dscription</strong>
+							<input style="width: 100%;" type="text" name="description"/></br></br>
+
+							<button style="width: 100%;height: 50px; background: rgb(0,64,68); color: white;" type="submit"  name="submit1"><strong>UPLOAD</strong></button>
+						</form>
+						<?php
+							
+								$filename = isset($_POST['description']) ? $_POST['description'] : '';
+
+							$db = mysqli_connect('localhost', 'root', '', 'documents');
+							if (isset($_POST["submit1"])) {
+								$Subjects =$_POST['Subjects'];
+								$fnm = $_FILES["f"]["name"];
+								$dst= "./uploads/".$fnm;
+								move_uploaded_file($_FILES["f"]["tmp_name"], $dst);
+								$query="INSERT into $Subjects(uploaded_by,name,path)values('$filename','$fnm','$dst')";
+								$query=mysqli_query($db, $query);
+
+								if ($query==true) {
+									echo "Document uploaded successfully";
+								} else {
+									echo " ";
+								}
+							}
+						?>
 					</div>
+				</div>
 
 				</div>
+
+			</section>
+		</div>
+	</div>
+	
+
+		
+		
+	<div class="footer panel">
+			<div class="row">
+				<div class="col-sm-5 col-sm-offset-1">
+					<p class="simplenav">
+						<a href="#">Home</a> | 
+						<a href="#">About</a> |
+						<a href="#">Contact</a>
+						| <a href="#">Logout</a>
+					</p>
+				</div>
+
+				<div class="col-sm-4 col-sm-offset-1">
+					<p class="text-right">
+						Copyright &copy; 2019. Developed by Petrichor Technologies</a>
+					</p>
+				</div>
+
 			</div>
 		</div>
-	</footer>
+	</div>
+
 
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
