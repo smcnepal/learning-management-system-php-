@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,6 @@
 					<div class="featured-box"> 
 						<?php 
 							$db=mysqli_connect ("localhost", "root", "") or die ('I cannot connect to the database because: ' . mysqli_error()); mysqli_select_db ($db,"documents");
-
 							$query = mysqli_query($db,"SELECT * FROM physics ORDER BY name");
 								echo '<div class = "table-responsive">';
 								echo '<table class = "table">';
@@ -76,7 +74,8 @@
 									echo "<td>"; echo $r["uploaded_by"]; echo "</td>";
 									echo "<td>";
 									?>
-										<a href="<?php echo $r["path"];?>#toolbar=0&navpanes=0&scrollbar=0">preview</a>
+										<!--<a href="<?php echo $r["path"];?>#toolbar=0&navpanes=0&scrollbar=0">preview</a>-->
+										<embed src="<?php echo $r["path"];?>#toolbar=0" width="1000" height="750"> 
 										
 									<?php
 									echo "</td>";
@@ -89,7 +88,6 @@
 					</div>
 				</div>
 				<div class="col-md-4"></div>
-				<h2 style="text-align: center;">assignment</h2>
 				
 			</div>
 			
@@ -128,4 +126,3 @@
 		} 
 	</script>
 </body>
-</html>
