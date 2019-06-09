@@ -43,10 +43,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   border: 1px solid #888;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
+  
 }
 
 /* Add Animation */
@@ -83,7 +80,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+	padding: 2px 16px;
+	
+}
 
 .modal-footer {
   padding: 2px 16px;
@@ -130,34 +130,25 @@ body {font-family: Arial, Helvetica, sans-serif;}
 									echo "<td>"; echo $r["uploaded_by"]; echo "</td>";
 									echo "<td>";
 									?>
-										<!--<a href="<?php echo $r["path"];?>#toolbar=0&navpanes=0&scrollbar=0">preview</a>-->
+										
 
 									<div>
 										
 										<!-- Trigger/Open The Modal -->
-										<button id="myBtn">preview</button>
-
-										<!-- The Modal -->
+										<button id="myBtn" onclick = 'modelbutton("<?php echo $r["path"];?>")'>preview</button>
 										<div id="myModal" class="modal">
+                    <!-- Modal content -->
+                   <div class="modal-content">
+                        <div class="modal-header">
+                           <span class="close">&times;</span>
+                        </div>
+                      <div class="modal-body">
 
-										  <!-- Modal content -->
-										  <div class="modal-content">
-										    <div class="modal-header">
-										      <span class="close">&times;</span>
-										    </div>
-										    <div class="modal-body">
-										      <embed src="<?php echo $r["path"];?>#toolbar=0" width="1000" height="750">
+					 </div>
+                    </div>
 
-
-
-										    </div>
-										   <!-- <div class="modal-footer">
-										      <h3>Modal Footer</h3>
-										    </div>-->
-										  </div>
-
-										</div>
-
+              </div>
+										
 
 									</div>
 
@@ -210,8 +201,20 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+function modelbutton(url) {
+	$.post("service2.php", {url:url},function(res){
+	$('.modal-body').html(res);
+	modal.style.display = "block";
+	document.onmousedown = disableRightclick;
+	var message = "Right click not allowed !!";
+	function disableRightclick(evt){
+		if(evt.button == 2){
+			alert(message);
+			return false;    
+		}
+	}
+
+});
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -276,4 +279,5 @@ window.onclick = function(event) {
 			confirm("sorry !!! to access other department,please select respective department during registration");
 		} 
 	</script>
+	
 </body>

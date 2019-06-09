@@ -40,22 +40,24 @@
 	
 </head>
 <body class="mybody" >
- <div id="pcourses">
+ 	<div id="pcourses">
 		<section class="container">
 			<div class="row">
 				<div class="col-md-4">
 					<div class="featured-box"> 
 						<div class="text">
 							<button type="button" class="btn btn-primary btn-block" onclick="Physics()">Physics</button><br>
-                   		
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4" id="display_physics">
 					<div class="featured-box"> 
-						<?php 
-							$db=mysqli_connect ("localhost", "root", "") or die ('I cannot connect to the database because: ' . mysqli_error()); mysqli_select_db ($db,"documents");
-							$query = mysqli_query($db,"SELECT * FROM physics ORDER BY name");
+						<?php
+						echo "hello";
+						
+							$db=mysqli_connect("localhost", "root", "") or die ('I cannot connect to the database because: ' . mysqli_error()); 
+							mysqli_select_db($db,"documents");
+							$query = mysqli_query($db,"SELECT * FROM physics");
 								echo '<div class = "table-responsive">';
 								echo '<table class = "table">';
 								echo '<Thead>';
@@ -73,9 +75,12 @@
 									echo "<td>"; echo $r["name"]; echo "</td>";
 									echo "<td>"; echo $r["uploaded_by"]; echo "</td>";
 									echo "<td>";
+									// $GLOBALS["urls"] = $r["path"];
 									?>
-										<!--<a href="<?php echo $r["path"];?>#toolbar=0&navpanes=0&scrollbar=0">preview</a>-->
-										<embed src="<?php echo $r["path"];?>#toolbar=0" width="1000" height="750"> 
+										<!-- <a href="<?php echo $r["path"];?>#toolbar=0&navpanes=0&scrollbar=0">preview</a> -->
+										
+										<div class = "btn" id = "mybtn" onclick = 'pdfviewer("<?php echo $r["path"];?>")'>Preview</div>
+										<!-- <embed src="<?php echo $r["path"];?>#toolbar=0" width="1000" height="750">  -->
 										
 									<?php
 									echo "</td>";
@@ -86,22 +91,26 @@
 							echo "</div>";
 						?>
 					</div>
-				</div>
-				<div class="col-md-4"></div>
-				
+				</div>				
 			</div>
-			
-			</div>
-
 		</section>
 	</div>
-	
-	</div>
-	
-  </div>
-</div>
+
+<script>
 
 	
+
+	function pdfviewer(url){
+		console.log(url);
+			// window.location = "http://www.corelangs.com/js/basics/redirect.html";
+			var ifrm =  document.createElement("iframe");
+			ifrm.setAttribute("id", "ifrm");
+			ifrm.setAttribute("src",url);
+				document.body.appendChild(ifrm);
+		}
+	
+
+</script>	
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -112,11 +121,11 @@
 			var x = document.getElementById("display_physics");
 			if (x.style.display === "none") {
 				x.style.display = "block";
-				document.getElementById("display_cip").style.display = "none";
-				document.getElementById("display_mechanical").style.display = "none";
-				document.getElementById("display_mechanics").style.display = "none";
-				document.getElementById("display_electrical").style.display = "none";
-				document.getElementById("display_maths1").style.display = "none";
+				// document.getElementById("display_cip").style.display = "none";
+				// document.getElementById("display_mechanical").style.display = "none";
+				// document.getElementById("display_mechanics").style.display = "none";
+				// document.getElementById("display_electrical").style.display = "none";
+				// document.getElementById("display_maths1").style.display = "none";
 			} else {
 				x.style.display = "none";
 			}
