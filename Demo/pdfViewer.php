@@ -1,3 +1,5 @@
+
+
 <!doctype html>
  
 <html lang="en">
@@ -37,6 +39,12 @@
             <div id="zoom_controls">  
                 <div class = "btn" id="zoom_in" style="margin-top: 10px;">+</div>
                 <div class = "btn" id="zoom_out" style="margin-top: 10px;">-</div>
+                <?php
+    
+        $url = $_POST['view'];
+        
+
+    ?>
             </div>
      
     </div>
@@ -54,7 +62,7 @@
     
     
 
-    pdfjsLib.getDocument('./uploads/R programming.pdf').then((pdf) => {
+    pdfjsLib.getDocument('<?php echo $url?>').then((pdf) => {
         myState.pdf = pdf;
         render();
 

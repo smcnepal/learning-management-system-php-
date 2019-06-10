@@ -17,6 +17,7 @@
 
     // connect to database
     $db = mysqli_connect('localhost', 'root', '', 'lms_projectdb');
+    $db2 = mysqli_connect('localhost', 'root', '', 'documents');
 
     // REGISTER USER
     if (isset($_POST['reg_user'])) {
@@ -174,3 +175,5 @@
             }
         }
     }
+
+ 
