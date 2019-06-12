@@ -1,0 +1,129 @@
+.navbar {
+    border-radius: 0px;
+    min-height: 80px !important;
+}
+
+.navbar-brand,.navbar-default .navbar-nav>li>a  {
+    color: #337ab7 !important;
+}
+
+.navbar-nav{
+    margin-top: 15px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    font-size: 16px;
+}
+
+.col-md-7 {
+    padding: 0px;
+    margin-left: 0px;
+}
+.sidebar {
+    margin: 0;
+    margin-top: -20px;
+    padding: 0;
+    width: 270px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  .sidebar a, .dropdown-btn {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  div.content {
+    margin-left: 290px;
+    margin-top: 100px;
+    padding: 1px 16px;
+    
+  }
+  
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+  /* Style the sidebar links and the dropdown button */
+.sidebar a, .dropdown-btn {
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    /* border: .5px solid black; */
+    background: #eeebeb;
+
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 1px;
+    
+  }
+  
+
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;
+    padding-left: 8px;
+  }
+  
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+
+  .tabs {
+      width: 94%;
+      margin-left: 3%;
+      margin-bottom: 2px;
+      background-color:#337ab7;
+      color: white;
+      padding: 10px;
+  }
+
+  .tabs:hover {
+    background-color: rgb(224, 116, 0);
+    color: white;
+  }
+
+  #dropdown .active {
+    background-color: rgb(224, 116, 0) !important;
+    color: white;
+  }
+
+  .footer {
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      width: 100%;
+      background-color: rgb(172, 172, 172);
+      z-index: 10;
+      padding: 20px;
+  }
+ 
+ 
